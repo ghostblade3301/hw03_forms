@@ -22,14 +22,14 @@
               {{ post.text }}
           </p>
           <p>
-              <a href="/{{ author.username }}/{{ post.id }}/" role="button">
-              Добавить комментарий
-              </a>
+            <a href="{% url 'posts:post_detail' post.id %}">
+              Подробная информация
+            </a>
           </p>
           <p>
-          <a href="/posts/{{ post.id }}/edit" role="button">
+            <a href="/posts/{{ post.id }}/edit" role="button">
               Редактировать
-          </a>
+            </a>
           </p>
           <hr>
         {% endfor %}
