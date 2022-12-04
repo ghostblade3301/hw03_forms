@@ -9,16 +9,13 @@ from .models import Group, Post
 
 
 def index(request):
-    title = 'Главная страница'
     template = 'posts/index.html'
     post_list = Post.objects.all()
     paginator = Paginator(post_list, settings.POSTS_PER_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    # posts = (Post.objects.all()[:settings.POSTS_PER_PAGE])
     context = {
         'page_obj': page_obj,
-        'title': title,
     }
     return render(request, template, context)
 
@@ -65,14 +62,12 @@ def post_detail(request, post_id):
 @login_required
 def post_create(request):
     template = 'posts/create.html'
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('posts:profile', post.author)
-    form = PostForm()
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.save()
+        return redirect('posts:profile', post.author)
 
     context = {
         'form': form,
