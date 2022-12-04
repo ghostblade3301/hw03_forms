@@ -11,15 +11,15 @@
       <article>
         {% for post in page_obj %}
           <ul>
-              <li>
+            <li>
               Автор: {{ author.get_full_name }}
-              </li>
-              <li>
+            </li>
+            <li>
               Дата публикации: {{ post.pub_date|date:"d E Y" }}
-              </li>
+            </li>
           </ul>
           <p>
-              {{ post.text }}
+            {{ post.text }}
           </p>
           <p>
             <a href="{% url 'posts:post_detail' post.id %}">
