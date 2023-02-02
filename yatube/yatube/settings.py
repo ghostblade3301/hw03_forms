@@ -134,9 +134,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 POSTS_PER_PAGE = 10
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'posts:main'
+LOGIN_REDIRECT_URL = 'posts:index'
 # LOGOUT_REDIRECT_URL = 'users:logout'
-SIGNUP_REDIRECT_URL = 'posts:main'
+SIGNUP_REDIRECT_URL = 'posts:index'
 
 #  подключаем движок filebased.EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
