@@ -4,7 +4,7 @@ from django import forms
 from posts.models import Group, Post, User
 
 
-class PostURLTests(TestCase):
+class PostTests(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -48,7 +48,6 @@ class PostURLTests(TestCase):
     # checking templates and reverse names
     def test_pages_uses_correct_template(self):
         """URL-адрес использует соответствующий шаблон."""
-        # Собираем в словарь пары "имя_html_шаблона: reverse(name)"
         templates_pages_names = {
             reverse('posts:index'): 'posts/index.html',
             reverse('posts:group_list', kwargs={'slug': 'test-slug-1'}): (
@@ -104,7 +103,7 @@ class PostURLTests(TestCase):
         )
         self.assertIn('post', response.context)
 
-    # create template is formed with the correct context
+    # template is formed with the correct context
     def test_post_create_page_show_correct_context(self):
         """Шаблон post_create сформирован с правильным контекстом."""
         response = self.authorized_client.get(reverse('posts:post_create'))
