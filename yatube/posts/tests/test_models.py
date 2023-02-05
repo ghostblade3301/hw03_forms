@@ -1,29 +1,25 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
-
-from ..models import Group, Post, User
-
-User = get_user_model()
+from posts.models import User, Group, Post
 
 
-class PostModelTest(TestCase):
+class TestPostModels(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.user = User.objects.create_user(username='auth', )
         cls.group = Group.objects.create(
-            title='Тестовая группа',
-            slug='Тестовый слаг',
-            description='Тестовое описание',
+            title='Test title',
+            slug='slug-test',
+            description='Test description',
         )
         cls.post = Post.objects.create(
             author=cls.user,
-            text='Тестовый пост',
+            text='Test post',
         )
 
     def test_models_have_correct_object_names(self):
-        """Проверяем, что у моделей корректно работает __str__."""
-        group = PostModelTest.group
-        post = PostModelTest.post
+        """Проверка корректности работы __str__."""
+        group = TestPostModels.group
+        post = TestPostModels.post
         self.assertEqual(str(self.post), post.text[:15])
         self.assertEqual(str(self.group), group.title)

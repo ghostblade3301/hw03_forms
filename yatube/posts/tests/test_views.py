@@ -4,7 +4,7 @@ from django import forms
 from posts.models import Group, Post, User
 
 
-class PostTests(TestCase):
+class TestViews(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

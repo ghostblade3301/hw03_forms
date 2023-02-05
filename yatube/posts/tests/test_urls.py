@@ -21,14 +21,14 @@ class TestPostsURLs(TestCase):
         cls.post = Post.objects.create(
             author=cls.user,
             id=100,
-            text='Тестовый текст',
+            text='Text for test',
         )
 
         # create group in DB
         cls.group = Group.objects.create(
-            title='Тестовая группа',
+            title='Test group',
             slug='test-slug',
-            description='Тестовое описание группы',
+            description='Test description',
         )
 
         # test templates and pages
