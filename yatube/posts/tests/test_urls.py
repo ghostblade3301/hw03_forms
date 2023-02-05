@@ -1,4 +1,3 @@
-# posts/tests/test_urls.py
 from http import HTTPStatus
 
 from django.test import Client, TestCase
